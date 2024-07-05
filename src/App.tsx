@@ -1,8 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { PokemonClient } from "pokenode-ts";
 
 function App() {
+  (async () => {
+    const pokemonClient = new PokemonClient();
+
+    try {
+      const pokemonData = await pokemonClient.listPokemons();
+      console.log(pokemonData);
+    } catch (error) {
+      console.error(error);
+    }
+  })();
+
   return (
     <div className="App">
       <header className="App-header">
